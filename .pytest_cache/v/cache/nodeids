@@ -1,0 +1,6 @@
+[
+  "test_bmp.py::test_createhands",
+  "test_bmp.py::test_test_hand",
+  "test_bmp.py::test_lotsofhands",
+  "test_bmp.py::test_randomhands"
+]

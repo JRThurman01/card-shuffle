@@ -1,0 +1,6 @@
+{
+  "test.py::Test_BMN::()::test_play_hand": true,
+  "test_bmp.py::test_lotsofhands": true,
+  "test_bmp.py::test_randomhands": true,
+  "test_bmp.py::test_stringhand": true
+}
