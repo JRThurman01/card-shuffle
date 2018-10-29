@@ -11,7 +11,7 @@ def penalty_value_of(card):
 
 def play(hands, firstCardOnLeft=True, verbose=False, maxTricks = 1000):
     a, b = hands  # hands are called a and b
-    print("Starting hands: %s/%s" % (a, b))
+#    print("Starting hands: %s/%s" % (a, b))
     if not firstCardOnLeft:
         a.reverse()
         b.reverse()
@@ -167,16 +167,16 @@ if __name__ == '__main__':
     try:
         file_counter = 0
         while True:  # for i in range(0,10000):
-            with open('result{}.csv' .format(file_counter), 'w') as file:
+            with open('run1/result{}.csv' .format(file_counter), 'w') as file:
                 file.write('starting_deck = {} \n'.format(shuffled_deck.deck()))
                 file.write('starting_deck_config = {} \n' .format(shuffled_deck.card_permutation))
                 file.write('Run Number,Hands,Tricks\n')
 
                 run_counter = 0
-                for i in range(0,10000000):
+                for i in range(0,1000000): # limiting to 1m to make reading this easier
 
                         hand = shuffled_deck.deal()
-                        result = play(hand, verbose=False, maxTricks=1000)
+                        result = play(hand, verbose=False, maxTricks=1000) #Normally 1000
                         file.write('{},{},{} \n' .format(run_counter, result[0], result[1]))
                         shuffled_deck.next_deck()
                         run_counter +=1
