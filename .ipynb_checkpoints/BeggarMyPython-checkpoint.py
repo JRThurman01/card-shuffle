@@ -163,20 +163,23 @@ class ShuffledDeck(object):
 
 if __name__ == '__main__':
     run_counter=0
-    filename = f'result{datetime.datetime.now()}.csv'
     shuffled_deck = ShuffledDeck()
     shuffled_deck.random()
+    try:    
+        with open(f'result_{datetime.datetime.now()}.csv', 'w') as file:
+            file.write('Run Number,Hand1, Hand2, Hands,Tricks\n')
+            #for j in range(0,10000000):
+            while True:
+                hand = shuffled_deck.deal()
+                result = play(hand, verbose=False, maxTricks=1000) #Normally 1000
+                if result[1]> 400:
+                    print(run_counter, hand,result)
+                    file.write(f'{run_counter}, {hand[0]},{hand[1]}, {result[0]}, {result[1]} \n')
 
-    with open(filename, 'w+') as file:
-        file.write('Run Number,Hand1, Hand2, Hands,Tricks\n')
-    
-    while True:
-       hand = shuffled_deck.deal()
-       result = play(hand, verbose=False, maxTricks=1000) #Normally 1000
-       if result[1]> 300:
-           with open(filename,'a+') as file:
-               file.write(f'{run_counter}, {hand[0]},{hand[1]}, {result[0]}, {result[1]} \n')
-
-       shuffled_deck.next_deck()
-       run_counter +=1
-       #print(run_counter)
+                shuffled_deck.next_deck()
+                run_counter +=1
+        file.close()
+        print(run_counter)
+    finally:
+        file.close()
+        print(run_counter)

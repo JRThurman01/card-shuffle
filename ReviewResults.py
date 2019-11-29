@@ -4,9 +4,9 @@ from matplotlib import pyplot as plt
 df_summary=pd.DataFrame()
 
 multiplier = 1000000
-for i in range(0,41):
+for i in range(0,8):
     for j in range(0,10):
-        df = pd.read_csv('run1/result{}.csv' .format(i), delimiter=',', names=['Run Number', 'Hands', 'Tricks'], header=0, skiprows=multiplier*j +3, nrows= multiplier)
+        df = pd.read_csv('run3/result{}.csv' .format(i), delimiter=',', names=['Run Number', 'Hands', 'Tricks'], header=0, skiprows=multiplier*j +3, nrows= multiplier)
         df_summary = df_summary.append({'run range':i*10+j,'mean':df['Tricks'].mean(), 'max':df['Tricks'].max()}, ignore_index=True)
         print(i*10+j)
 
